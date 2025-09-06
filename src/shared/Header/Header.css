@@ -1,0 +1,8 @@
+.nav-shadow {
+  box-shadow: 0 4px 6px -1px rgba(167, 143, 253, 0.5), 0 2px 4px -1px rgba(167, 143, 253, 0.3);
+}
+
+.mobile-menu > a {
+    border-bottom: 1px solid #A78FFD ;
+}
+
