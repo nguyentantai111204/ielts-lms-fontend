@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 const TestModal = ({ isOpen, onClose, onSave, test }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [type, setType] = useState("FULL"); // ví dụ: FULL, MINI
+  const [type, setType] = useState("FULL"); 
   const [isActive, setIsActive] = useState(true);
 
-  // Preload test data khi edit
+
   useEffect(() => {
     if (test) {
       setTitle(test.title || "");

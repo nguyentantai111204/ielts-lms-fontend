@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SUBMISSION_API_URL = "http://localhost:8080/api/test-submissions";
+const SUBMISSION_API_URL = "https://ielts-lms-backend-1.onrender.com/api/test-submissions";
 
 const getAuthHeader = () => {
   const token = localStorage.getItem("token");

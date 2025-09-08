@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/quiz";
+const API_URL = "https://ielts-lms-backend-1.onrender.com/api/quiz";
 
 export const getActiveQuizByLesson = async (lessonId) => {
   const token = localStorage.getItem("token");

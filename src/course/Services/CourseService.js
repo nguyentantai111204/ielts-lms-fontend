@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/course";
+const API_URL = "https://ielts-lms-backend-1.onrender.com/api/course";
 
 export const fetchCourses = async () => {
   const response = await axios.get(`${API_URL}/all_courses`);

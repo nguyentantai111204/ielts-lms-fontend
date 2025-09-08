@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth"; 
+const API_URL = "https://ielts-lms-backend-1.onrender.com/api/auth"; 
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");

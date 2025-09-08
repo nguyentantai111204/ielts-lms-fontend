@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { CheckCircle2, Headphones, Home, Video, ChevronDown } from 'lucide-react';
 import { getCourseBySlug, getCourseOutcomes } from '../Services/CourseService';
-import { getLessonsPreview } from '../../lesson/Services/LessonService';
+import { getLessonsPreview } from '../Services/LessonService';
 
 const iconMap = {
   video: <Video className="w-4 h-4 text-gray-600" />,

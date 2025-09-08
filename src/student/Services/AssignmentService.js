@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/assignment";
+const API_URL = "https://ielts-lms-backend-1.onrender.com/api/assignment";
 
 // Lấy tất cả assignment theo lesson
 export const getAssignmentsByLesson = async (lessonId) => {
