@@ -7,7 +7,7 @@ const CourseContext = createContext();
 export const CourseProvider = ({ children }) => {
   const queryClient = useQueryClient();
 
-  // Lấy dữ liệu trực tiếp từ useQuery
+
   const { data: courses = [], isLoading, error } = useQuery({
     queryKey: ["courses"],
     queryFn: fetchCourses,
@@ -16,7 +16,7 @@ export const CourseProvider = ({ children }) => {
     refetchOnWindowFocus: false,
   });
 
-  // Mutation thêm khóa học
+
   const addCourseMutation = useMutation({
     mutationFn: addCourseAPI,
     onSuccess: (newCourse) => {
@@ -24,7 +24,7 @@ export const CourseProvider = ({ children }) => {
     },
   });
 
-  // Mutation xóa khóa học
+
   const deleteCourseMutation = useMutation({
     mutationFn: deleteCourseAPI,
     onSuccess: (deletedId) => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_URL = "https://ielts-lms-backend-1.onrender.com/api/tests";
-
+const API_URL_BACKUP = "http://localhost:8080/api/tests";
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
   return {
@@ -11,7 +11,7 @@ const getAuthHeaders = () => {
 
 // Lấy tất cả test
 export const getAllTests = async () => {
-  const res = await axios.get(`${API_URL}`, {
+  const res = await axios.get(`${API_URL_BACKUP}`, {
     headers: getAuthHeaders(),
   });
   return res.data;
@@ -19,7 +19,7 @@ export const getAllTests = async () => {
 
 // Lấy test theo id
 export const getTestById = async (testId) => {
-  const res = await axios.get(`${API_URL}/${testId}`, {
+  const res = await axios.get(`${API_URL_BACKUP}/${testId}`, {
     headers: getAuthHeaders(),
   });
   return res.data;
@@ -27,7 +27,7 @@ export const getTestById = async (testId) => {
 
 // Thêm test mới
 export const addTest = async (testData) => {
-  const res = await axios.post(`${API_URL}/add`, testData, {
+  const res = await axios.post(`${API_URL_BACKUP}/add`, testData, {
     headers: {
       ...getAuthHeaders(),
       "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const addTest = async (testData) => {
 
 // Sửa test
 export const updateTest = async (testId, testData) => {
-  const res = await axios.put(`${API_URL}/update/${testId}`, testData, {
+  const res = await axios.put(`${API_URL_BACKUP}/update/${testId}`, testData, {
     headers: {
       ...getAuthHeaders(),
       "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const updateTest = async (testId, testData) => {
 
 // Xóa test
 export const deleteTest = async (testId) => {
-  const res = await axios.delete(`${API_URL}/delete/${testId}`, {
+  const res = await axios.delete(`${API_URL_BACKUP}/delete/${testId}`, {
     headers: getAuthHeaders(),
   });
   return res.data;
@@ -57,7 +57,7 @@ export const deleteTest = async (testId) => {
 
 // Đếm số lượng test
 export const countTest = async () => {
-  const res = await axios.get(`${API_URL}/count_test`, {
+  const res = await axios.get(`${API_URL_BACKUP}/count_test`, {
     headers: getAuthHeaders(),
   });
   return res.data;

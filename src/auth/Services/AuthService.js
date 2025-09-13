@@ -2,14 +2,15 @@
 import axios from "axios";
 
 const API_URL = "https://ielts-lms-backend-1.onrender.com/api/auth"; 
+const API_URL_BACKUP = "http://localhost:8080/api/auth"; 
 
 export const loginApi = async (email, password) => {
-  const response = await axios.post(`${API_URL}/login`, { email, password });
+  const response = await axios.post(`${API_URL_BACKUP}/login`, { email, password });
   return response.data;
 };
 
 export const registerApi = async (userData) => {
-  const response = await axios.post(`${API_URL}/signup`, userData);
+  const response = await axios.post(`${API_URL_BACKUP}/signup`, userData);
   return response.data;
 };
 

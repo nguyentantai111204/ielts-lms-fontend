@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_URL = "https://ielts-lms-backend-1.onrender.com/api/student";
-
+const API_URL_BACKUP = "http://localhost:8080/api/student";
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
@@ -12,7 +12,7 @@ const getAuthHeaders = () => {
 
 
 export const getProfile = async (studentId) => {
-  const res = await axios.get(`${API_URL}/profile/${studentId}`, {
+  const res = await axios.get(`${API_URL_BACKUP}/profile/${studentId}`, {
     headers: getAuthHeaders(),
   });
   return res.data;
@@ -29,7 +29,7 @@ export const updateAvatar = async (studentId, file) => {
   const formData = new FormData();
   formData.append("file", file);
 
-  const res = await axios.put(`${API_URL}/update_avatar/${studentId}`, formData, {
+  const res = await axios.put(`${API_URL_BACKUP}/update_avatar/${studentId}`, formData, {
     headers: {
       ...getAuthHeaders(),
       "Content-Type": "multipart/form-data",
@@ -46,7 +46,7 @@ export const changePassword = async (studentId, data) => {
     if (!token) throw new Error("Bạn chưa đăng nhập");
 
     const response = await axios.put(
-      `${API_URL}/change_password/${studentId}`,
+      `${API_URL_BACKUP}/change_password/${studentId}`,
       data,
       {
         headers: {
@@ -67,7 +67,7 @@ export const getAllNotifications = async (userId) => {
   const token = localStorage.getItem("token");
   if (!token) throw new Error("Bạn chưa đăng nhập");
 
-  const response = await axios.get(`${API_URL}/allnotifications/${userId}`, {
+  const response = await axios.get(`${API_URL_BACKUP}/allnotifications/${userId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -80,7 +80,7 @@ export const getUnreadNotifications = async (userId) => {
   if (!token) throw new Error("Bạn chưa đăng nhập");
 
   const response = await axios.get(
-    `${API_URL}/unreadnotifications/${userId}`,
+    `${API_URL_BACKUP}/unreadnotifications/${userId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -94,7 +94,7 @@ export const isReadNotifications = async (notificationId) => {
   const token = localStorage.getItem("token");
   if (!token) throw new Error("Bạn chưa đăng nhập");
 
-  const response = await axios.put(`${API_URL}/${notificationId}/is_read`, {
+  const response = await axios.put(`${API_URL_BACKUP}/${notificationId}/is_read`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

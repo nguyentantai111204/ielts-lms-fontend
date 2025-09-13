@@ -12,7 +12,7 @@ const LoginPage = () => {
   const [localError, setLocalError] = useState("");
   const navigate = useNavigate();
 
-  const { login, loading, error, user } = useAuth(); 
+  const { login, error } = useAuth(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();

@@ -2,13 +2,14 @@ import axios from "axios";
 
 const API_URL = "https://ielts-lms-backend-1.onrender.com/api/assignment";
 
+const API_URL_BACKUP = "http://localhost:8080/api/assignment";
 // Lấy tất cả assignment theo lesson
 export const getAssignmentsByLesson = async (lessonId) => {
   try {
     const token = localStorage.getItem("token");
     if (!token) throw new Error("Bạn chưa đăng nhập");
 
-    const response = await axios.get(`${API_URL}/lesson/${lessonId}`, {
+    const response = await axios.get(`${API_URL_BACKUP}/lesson/${lessonId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -25,7 +26,7 @@ export const getAssignmentById = async (assignmentId) => {
     const token = localStorage.getItem("token");
     if (!token) throw new Error("Bạn chưa đăng nhập");
 
-    const response = await axios.get(`${API_URL}/${assignmentId}`, {
+    const response = await axios.get(`${API_URL_BACKUP}/${assignmentId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -51,7 +52,7 @@ export const uploadAssignment = async (data, file) => {
     formData.append("filePath", file); // tên phải trùng với DTO
   }
 
-  const response = await axios.post(`${API_URL}/uploadAssignment`, formData, {
+  const response = await axios.post(`${API_URL_BACKUP}/uploadAssignment`, formData, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data"

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = "https://ielts-lms-backend-1.onrender.com/api/test-submissions";
 
-
+const API_URL_BACKUP = "http://localhost:8080/api/test-submissions";
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
   return {
@@ -11,35 +11,35 @@ const getAuthHeaders = () => {
 };
 
 export const countTestSubmission = async () => {
-  const res = await axios.get(`${API_URL}/count_submission`, {
+  const res = await axios.get(`${API_URL_BACKUP}/count_submission`, {
     headers: getAuthHeaders(),
   });
   return res.data;
 };
 
 export const countTestSubmissionByTest = async (testId) => {
-  const res = await axios.get(`${API_URL}/count_submission_by_test/${testId}`, {
+  const res = await axios.get(`${API_URL_BACKUP}/count_submission_by_test/${testId}`, {
     headers: getAuthHeaders(),
   });
   return res.data;
 };
 
 export const getWeeklySubmissionsByTest = async (testId) => {
-  const res = await axios.get(`${API_URL}/stat_submission/week/${testId}`, {
+  const res = await axios.get(`${API_URL_BACKUP}/stat_submission/week/${testId}`, {
     headers: getAuthHeaders(),
   });
   return res.data;
 };
 
 export const getBandStatistics = async () => {
-  const res = await axios.get(`${API_URL}/band_statistics/all`, {
+  const res = await axios.get(`${API_URL_BACKUP}/band_statistics/all`, {
     headers: getAuthHeaders(),
   });
   return res.data;
 };
 
 export const getBandStatisticsByTest = async (testId) => {
-  const res = await axios.get(`${API_URL}/band_statistics/test/${testId}`, {
+  const res = await axios.get(`${API_URL_BACKUP}/band_statistics/test/${testId}`, {
     headers: getAuthHeaders(),
   });
   return res.data;

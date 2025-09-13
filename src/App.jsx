@@ -39,6 +39,9 @@ import AdminCourseManagement from "./admin/Pages/AdminCourseManagement";
 import AdminTestManagement from "./admin/Pages/AdminTestManagement";
 import TestStat from "./admin/Pages/TestStat";
 import AdminInstructorManagement from "./admin/Pages/AdminIntructorManagement";
+import HistoryTestPage from "./student/Pages/HistoryTestPage";
+import HistoryTestDetailPage from "./student/Pages/HistoryTestDetailPage";
+import CourseStudentsPage from "./admin/Pages/AdminCourseStudentManagement";
 
 const queryClient = new QueryClient();
 
@@ -68,6 +71,9 @@ const App = () => {
                   <Route path="/my-courses/view/:courseId/lesson/:lessonId/quiz/:quizId" element={<QuizPage />} />
                   <Route path="/student/profile/:studentId" element={<Profile />} />
                   <Route path="/student/notifications/:userId" element={<NotificationsPage />} />
+                  <Route path="/student/history-tests" element={<HistoryTestPage />} />
+                  <Route path="/student/history-tests/result-page/:submissionId" element={<HistoryTestDetailPage />} />
+
                 </Route>
 
                 {/* Instructor routes */}
@@ -103,6 +109,7 @@ const App = () => {
                   <Route path="tests" element={<AdminTestManagement/>} />
                   <Route path="tests/:testId/stat" element={<TestStat />} />
                   <Route path="instructors" element={<AdminInstructorManagement/>} />
+                  <Route path="courses/:courseId/students" element={<CourseStudentsPage/>} />
                 </Route>
               </Route>
 

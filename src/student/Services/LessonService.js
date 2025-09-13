@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const API_URL = "https://ielts-lms-backend-1.onrender.com/api/lesson"; 
-
+const API_URL_BACKUP = "http://localhost:8080/api/lesson";
 export const getAllLessonsInCourse = async (courseId) => {
   try {
     const token = localStorage.getItem("token");
     if (!token) throw new Error("Bạn chưa đăng nhập");
 
-    const response = await axios.get(`${API_URL}/get_all_lessons/${courseId}`, {
+    const response = await axios.get(`${API_URL_BACKUP}/get_all_lessons/${courseId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -25,7 +25,7 @@ export const getLessonById = async (lessonId) => {
   if (!token) throw new Error("Bạn chưa đăng nhập");
 
   const response = await axios.get(
-    `${API_URL}/lesson_id/${lessonId}`,
+    `${API_URL_BACKUP}/lesson_id/${lessonId}`,
     {
       headers: { Authorization: `Bearer ${token}` }
     }
@@ -39,7 +39,7 @@ export const studentEnterLesson = async (courseId, lessonId, otp) => {
   if (!token) throw new Error("Bạn chưa đăng nhập");
 
   const response = await axios.post(
-    `${API_URL}/student_enter_lesson/course_id/${courseId}/lesson_id/${lessonId}/otp/${otp}`,
+    `${API_URL_BACKUP}/student_enter_lesson/course_id/${courseId}/lesson_id/${lessonId}/otp/${otp}`,
     {}, 
     {
       headers: { Authorization: `Bearer ${token}` }
@@ -54,7 +54,7 @@ export const markAttendance = async (courseId, lessonId, otp) => {
   if (!token) throw new Error("Bạn chưa đăng nhập");
 
   const response = await axios.post(
-    `${API_URL}/student_enter_lesson/course_id/${courseId}/lesson_id/${lessonId}/otp/${otp}`,
+    `${API_URL_BACKUP}/student_enter_lesson/course_id/${courseId}/lesson_id/${lessonId}/otp/${otp}`,
     {}, 
     {
       headers: { Authorization: `Bearer ${token}` }

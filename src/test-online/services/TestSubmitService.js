@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const SUBMISSION_API_URL = "https://ielts-lms-backend-1.onrender.com/api/test-submissions";
+const SUBMISSION_API_URL_BACKUP = "http://localhost:8080/api/test-submissions";
 
 const getAuthHeader = () => {
   const token = localStorage.getItem("token");
@@ -11,7 +12,7 @@ const getAuthHeader = () => {
 // 1. Bắt đầu làm test (tạo submission mới)
 export const startTest = async (testId, userId) => {
   const res = await axios.post(
-    `${SUBMISSION_API_URL}/start/${testId}?userId=${userId}`,
+    `${SUBMISSION_API_URL_BACKUP}/start/${testId}?userId=${userId}`,
     null,
     { headers: getAuthHeader() }
   );
@@ -22,7 +23,7 @@ export const startTest = async (testId, userId) => {
 // 2. Lưu câu trả lời tạm thời cho 1 câu
 export const saveAnswer = async (submissionId, questionId, userAnswer) => {
   const res = await axios.post(
-    `${SUBMISSION_API_URL}/${submissionId}/answer?questionId=${questionId}`,
+    `${SUBMISSION_API_URL_BACKUP}/${submissionId}/answer?questionId=${questionId}`,
     JSON.stringify(userAnswer),
     { headers: { ...getAuthHeader(), "Content-Type": "application/json" } }
   );
@@ -32,7 +33,7 @@ export const saveAnswer = async (submissionId, questionId, userAnswer) => {
 // 3. Nộp bài (grading) từng submission
 export const submitTest = async (submissionId) => {
   const res = await axios.put(
-    `${SUBMISSION_API_URL}/${submissionId}/submit`,
+    `${SUBMISSION_API_URL_BACKUP}/${submissionId}/submit`,
     null,
     { headers: getAuthHeader() }
   );
@@ -42,7 +43,7 @@ export const submitTest = async (submissionId) => {
 // 4. Nộp bài cùng lúc với nhiều câu trả lời
 export const submitTestWithAnswers = async (submissionId, answersMap) => {
   const res = await axios.post(
-    `${SUBMISSION_API_URL}/${submissionId}/submit-with-answers`,
+    `${SUBMISSION_API_URL_BACKUP}/${submissionId}/submit-with-answers`,
     answersMap,
     { headers: { ...getAuthHeader(), "Content-Type": "application/json" } }
   );
@@ -51,7 +52,7 @@ export const submitTestWithAnswers = async (submissionId, answersMap) => {
 
 // 5. Xem lại bài làm chi tiết
 export const reviewSubmission = async (submissionId) => {
-  const res = await axios.get(`${SUBMISSION_API_URL}/${submissionId}/review`, {
+  const res = await axios.get(`${SUBMISSION_API_URL_BACKUP}/${submissionId}/review`, {
     headers: getAuthHeader(),
   });
   return res.data; // Trả về TestSubmissionDTO
@@ -59,7 +60,7 @@ export const reviewSubmission = async (submissionId) => {
 
 // 6. Lấy submission theo ID
 export const getSubmissionById = async (submissionId) => {
-  const res = await axios.get(`${SUBMISSION_API_URL}/${submissionId}`, {
+  const res = await axios.get(`${SUBMISSION_API_URL_BACKUP}/${submissionId}`, {
     headers: getAuthHeader(),
   });
   return res.data;
@@ -67,7 +68,7 @@ export const getSubmissionById = async (submissionId) => {
 
 // 7. Lấy tất cả submissions của user cho 1 test
 export const getUserSubmissionsForTest = async (testId, userId) => {
-  const res = await axios.get(`${SUBMISSION_API_URL}/test/${testId}/user/${userId}`, {
+  const res = await axios.get(`${SUBMISSION_API_URL_BACKUP}/test/${testId}/user/${userId}`, {
     headers: getAuthHeader(),
   });
   return res.data;
@@ -75,7 +76,7 @@ export const getUserSubmissionsForTest = async (testId, userId) => {
 
 // 8. Kiểm tra user đã bắt đầu test chưa
 export const hasUserStartedTest = async (testId, userId) => {
-  const res = await axios.get(`${SUBMISSION_API_URL}/test/${testId}/user/${userId}/has-started`, {
+  const res = await axios.get(`${SUBMISSION_API_URL_BACKUP}/test/${testId}/user/${userId}/has-started`, {
     headers: getAuthHeader(),
   });
   return res.data; // Boolean
@@ -83,7 +84,7 @@ export const hasUserStartedTest = async (testId, userId) => {
 
 // 9. Lấy submission đang làm dở (IN_PROGRESS)
 export const getInProgressSubmission = async (testId, userId) => {
-  const res = await axios.get(`${SUBMISSION_API_URL}/test/${testId}/user/${userId}/in-progress`, {
+  const res = await axios.get(`${SUBMISSION_API_URL_BACKUP}/test/${testId}/user/${userId}/in-progress`, {
     headers: getAuthHeader(),
   });
   return res.data;

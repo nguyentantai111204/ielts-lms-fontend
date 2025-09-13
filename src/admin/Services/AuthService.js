@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_URL = "https://ielts-lms-backend-1.onrender.com/api/auth"; 
-
+const API_URL_BACKUP = "http://localhost:8080/api/auth";
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
   return {
@@ -11,7 +11,7 @@ const getAuthHeaders = () => {
 
 export const addUser = async (formData) => {
   try {
-    const res = await axios.post(`${API_URL}/signup`, formData, {
+    const res = await axios.post(`${API_URL_BACKUP}/signup`, formData, {
       headers: {
         ...getAuthHeaders(),
         "Content-Type": "multipart/form-data",

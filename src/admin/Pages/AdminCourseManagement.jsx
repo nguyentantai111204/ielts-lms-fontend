@@ -7,6 +7,7 @@ import {
   addCourse,
 } from "../Services/CourseService";
 import CourseModal from "../Components/CourseModal";
+import { useNavigate } from "react-router-dom";
 
 const AdminCourseManagement = () => {
   const [courses, setCourses] = useState([]);
@@ -14,6 +15,8 @@ const AdminCourseManagement = () => {
   const [search, setSearch] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const nav = useNavigate();
 
   const fetchCourses = async () => {
     setLoading(true);
@@ -121,6 +124,7 @@ const AdminCourseManagement = () => {
             <tbody className="divide-y divide-gray-100">
               {filteredCourses.map((c, index) => (
                 <tr
+                onClick={()=> nav(`/admin/courses/${c.courseId}/students`)}
                   key={c.courseId}
                   className="hover:bg-gray-50 transition duration-150"
                 >

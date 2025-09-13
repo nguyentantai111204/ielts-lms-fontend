@@ -37,6 +37,7 @@ const Header = () => {
 
               {/* Khóa học */}
               {isAuthenticated && user ? (
+                <>
                 <Link
                   to={
                     user.role === "STUDENT"
@@ -49,6 +50,9 @@ const Header = () => {
                 >
                   Khóa học của tôi
                 </Link>
+
+              <Link to="/student/history-tests" className="element cursor-pointer">Lịch sử test</Link>
+                </>
               ) : (
                 <Dropdown />
               )}
